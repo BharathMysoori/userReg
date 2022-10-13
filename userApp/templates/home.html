@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+	<style type="text/css">
+		td,th {
+			border: 1px solid;
+		}
+	</style>
+</head>
+<body>
+	{% for d in data %}
+	<h1 style="text-align:center;">Home</h1>
+	<div style='float:right;'>
+	{% if request.user.is_authenticated %}
+	
+		<h3 style="color:firebrick; font-family: sans-serif;">USER:{{request.user}}</h3>
+		<a href='profile/'>Profile</a>
+		<a href='logout/'>Logout</a>
+		{% else %}
+		<a href='login/'>Login</a> 
+		<a href='register/'>SignUp</a>
+		{% endif %}
+</div>
+
+<div>
+	<hr>
+
+{% if d.userpic.url %}
+
+	<img class="rounded-circle mt-5" src="{{d.userpic.url}}" style="width: 250px; height: 250px">
+{% else %}
+	<img src="{profile_image/default.png}" style="width:500px;height:600px;">
+{% endif %}
+<table>
+	<tr>
+		<th>Catergory</th>
+		<th>Contact</th>
+	</tr>
+<tr> 
+	
+	<td>{{d.category}}</td>
+	<td>{{d.contactNo}}</td>
+
+<td>{{d.userpic.url}}</td>	
+
+	
+</tr>
+</table>
+</div>	
+{% endfor %}
+
+</body>
+</html>

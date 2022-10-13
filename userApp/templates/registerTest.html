@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
+    
+  </head>
+  <body>
+    <div class="main-block">
+      <h1>Registration</h1>
+      <form action="" method = "POST"  enctype="multipart/form-data">
+          {% csrf_token %}
+        <hr>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:Red">{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <hr>
+        <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
+        <input type="text" name="useremail" id="name" placeholder="Email" required/>
+
+        <label id="icon" for="name"><i class="fas fa-caret-down"></i></label>
+        <select name="usercat" id="name" class='form-control form-control-lg' style="width: 200px;">
+                      <option value="Electronics">Electronics</option>
+                      <option value="Clothing">Clothing</option>
+                      <option value="Furniture">Furniture</option>
+                      <option value="Books">Books</option>
+        </select>
+
+        <label id="icon" for="name"><i class="fas fa-user"></i></label>
+        <input type="text" name="username" id="name" placeholder="Name" required/>
+        <label id="icon" for="name"><i class="fas fa-address-book"></i></label>
+        <input type="text" name="usercontact" id="name" placeholder="contact" required/>
+        <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
+        <input type="password" name="userpass" id="name" placeholder="New Password" required/>
+        <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
+        <input type="password" name="userpass1" id="name" placeholder="Re-enter password" required/>
+        
+        
+  <label for="pic" class="btn">Select Image</label>
+          <input type="file" name='avatar'>
+
+        <hr>
+        <div class="gender">
+          <input type="radio" value="none" id="male" name="gender"/>
+          <label for="male" class="radio">Male</label>
+          <input type="radio" value="none" id="female" name="gender" />
+          <label for="female" class="radio">Female</label>
+        </div>
+        <hr>
+        <div class="btn-block">
+          
+          <button type="submit" href="/">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
